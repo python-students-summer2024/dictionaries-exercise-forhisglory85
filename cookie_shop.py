@@ -10,7 +10,7 @@ def bake_cookies(filepath):
     """
     cookies = []
     with open(filepath, 'r') as file:
-        header = file.readline().strip().split(',')
+        file.readline()
         for line in file:
             values = line.strip().split(',')
             cookie = {
@@ -49,7 +49,9 @@ def display_cookies(cookies):
     """
     print("Here are the cookies we have in the shop for you:\n")
     for cookie in cookies:
-        print(f"#{cookie['id']} - {cookie['title']}\n{cookie['description']}\nPrice: {cookie['price']}\n")
+        print(f"#{cookie['id']} - {cookie['title']}")
+        print(f"{cookie['description']}")
+        print(f"Price: ${cookie['price']}\n")
 
 def get_cookie_from_dict(id, cookies):
     """
@@ -59,6 +61,7 @@ def get_cookie_from_dict(id, cookies):
     :param cookies: a list of all cookies in the shop, where each cookie is represented as a dictionary.
     :returns: the matching cookie, as a dictionary
     """
+    
     for cookie in cookies:
         if cookie['id'] == id:
             return cookie
